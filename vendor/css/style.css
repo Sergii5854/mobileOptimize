@@ -9695,6 +9695,9 @@ ul#align-icon-text li {
   display: block
 }
 
+
+
+
 .faq-right-collapse .panel .panel-heading .panel-title a:hover {
   background-color: #c6edef
 }
@@ -10388,5 +10391,9 @@ ul#align-icon-text li {
 
 
 
+
+  .background-w {
+    background: #FFF
+  }
 
 
