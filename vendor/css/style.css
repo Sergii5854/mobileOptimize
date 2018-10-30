@@ -3780,6 +3780,7 @@ header ul.main > a > li.active {
 
 header ul.right {
   float: right
+
 }
 
 header ul.right.empty {
@@ -9787,17 +9788,18 @@ ul#align-icon-text li {
     display: none;
   }
   #main header .header-cta {
-    display: inline-block;
+    display: block;
     text-align: center;
     position: relative;
-    float: right;
+    text-align: center;
+
     top: 13px;
-    right: 10px
+    /*right: 10px*/
   }
 
   #main header .header-cta a {
     font-size: 13px;
-    padding: 0 8px;
+    padding: 4xp 16px;
     border: 1px solid #5faa41;
     background-color: white;
     color: #5faa41;
