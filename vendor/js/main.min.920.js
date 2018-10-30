@@ -20,13 +20,14 @@ var Counter = function () {
             }
         }, on_scroll(), $(document).on("scroll", on_scroll)
     }, update_counts = function () {
-        updating_counts = !0, in_view() ? $.get("/api/main_counters/").success(function (data) {
+        var data = {"session_count":34929161,"therapist_count":3262,"member_count":450265,"status":"success"}
+        updating_counts = !0, in_view() ? $.get(data).success(function (data) {
             var result = JSON.parse(data);
             counts.session_count.current = result.session_count, counts.therapist_count.current = result.therapist_count, counts.member_count.current = result.member_count
-        }).always(function () {
+         }).always(function () {
             in_view() && setTimeout(update_counts, 2e4)
         }) : updating_counts = !1
-    }, update_counters = function () {
+      }, update_counters = function () {
         if (updating_counters = !0, in_view()) {
             for (count in counts) {
                 var difference = counts[count].current - counts[count].previous;
@@ -62,9 +63,35 @@ $(document).ready(function () {
         $("html, body").animate({scrollTop: $(".numbers").offset().top - 60}, 500)
     }), AOS.init({duration: 1200});
     var visibleHeader = function () {
-        $(window).scrollTop() > 50 ? ($("header").addClass("scroll-header"), $(".hidden-sm.brand img").attr("src", "//" + page_info.cdn_host_assets + "/brand/betterhelp/icon-color.png" + page_info.assets_app_version), $(".header-cta").removeClass("hide")) : ($("header").removeClass("scroll-header"), $(".hidden-sm.brand img").attr("src", "//" + page_info.cdn_host_assets + "/brand/betterhelp/logo_reverse_medium.png" + page_info.assets_app_version), $(".header-cta").addClass("hide"))
+        $(window).scrollTop() > 50 ? ($("header").addClass("scroll-header"), $(".hidden-sm.brand img"), $(".header-cta").removeClass("hide")) : ($("header").removeClass("scroll-header"), $(".hidden-sm.brand img"), $(".header-cta").addClass("hide"))
     };
-    $(window).on("scroll", visibleHeader), visibleHeader(), $(".testimonial-slider").slick({
+
+    // $(window).on("scroll", visibleHeader), visibleHeader(), $(".testimonial-slider").slick({
+    //     dots: !0,
+    //     infinite: !1,
+    //     adaptiveHeight: !0,
+    //     arrows: !1,
+    //     swipe: !0,
+    //     swipeToSlide: !0,
+    //     autoplay: !0,
+    //     autoplaySpeed: 7e3
+    // }), Counter.init()
+
+    function createSlick() {
+
+        $(".testimonial-slider").not('.slick-initialized').slick({
+            dots: !0,
+            infinite: !1,
+            adaptiveHeight: !0,
+            arrows: !1,
+            swipe: !0,
+            swipeToSlide: !0,
+            autoplay: !0,
+            autoplaySpeed: 7e3
+        }), Counter.init()
+
+    }
+    $(".testimonial-slider").not('.slick-initialized').slick({
         dots: !0,
         infinite: !1,
         adaptiveHeight: !0,
@@ -74,5 +101,8 @@ $(document).ready(function () {
         autoplay: !0,
         autoplaySpeed: 7e3
     }), Counter.init()
+
+$(window).on("scroll", visibleHeader), visibleHeader(),createSlick()
+
 });
 //# sourceMappingURL=main.map
