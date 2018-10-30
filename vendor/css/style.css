@@ -9571,7 +9571,6 @@ ul#align-icon-text li {
 #main .testimonial .start-quote {
   left: -8px
 }
-
 #main .testimonial .end-quote {
   left: 88.5%;
   top: 0
@@ -10055,6 +10054,7 @@ ul#align-icon-text li {
   #main .steps .step-3 .screenshot-row img:last-child {
     margin-right: 30px
   }
+
 
   #main .steps .step-4 .img-text-wrap {
     text-align: center
