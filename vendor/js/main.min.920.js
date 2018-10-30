@@ -96,7 +96,8 @@ $(document).ready(function () {
             swipe: !0,
             swipeToSlide: !0,
             autoplay: !0,
-            autoplaySpeed: 7e3
+            autoplaySpeed: 7e3,
+
         }), Counter.init()
 
     }
@@ -109,7 +110,9 @@ $(document).ready(function () {
         swipe: !0,
         swipeToSlide: !0,
         autoplay: !0,
-        autoplaySpeed: 7e3
+        autoplaySpeed: 7e3,
+
+
     }), Counter.init()
 
     $(window).on("scroll", visibleHeader), visibleHeader(), createSlick()

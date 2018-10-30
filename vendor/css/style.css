@@ -9573,7 +9573,7 @@ ul#align-icon-text li {
 }
 
 #main .testimonial .end-quote {
-  left: 94.5%;
+  left: 88.5%;
   top: 0
 }
 
@@ -10076,12 +10076,12 @@ ul#align-icon-text li {
   }
 
   #main .testimonial .testimonial-highlight {
-    font-size: 1.3em
+    font-size: 1.1em
   }
 
   #main .testimonial .start-quote, #main .testimonial .end-quote {
     position: absolute;
-    width: 30px
+    width: 25px
   }
 
   #main .testimonial .start-quote {
