@@ -20,14 +20,14 @@ var Counter = function () {
             }
         }, on_scroll(), $(document).on("scroll", on_scroll)
     }, update_counts = function () {
-        var data = {"session_count":34929161,"therapist_count":3262,"member_count":450265,"status":"success"}
+        var data = {"session_count": 34929161, "therapist_count": 3262, "member_count": 450265, "status": "success"}
         updating_counts = !0, in_view() ? $.get(data).success(function (data) {
             var result = JSON.parse(data);
             counts.session_count.current = result.session_count, counts.therapist_count.current = result.therapist_count, counts.member_count.current = result.member_count
-         }).always(function () {
+        }).always(function () {
             in_view() && setTimeout(update_counts, 2e4)
         }) : updating_counts = !1
-      }, update_counters = function () {
+    }, update_counters = function () {
         if (updating_counters = !0, in_view()) {
             for (count in counts) {
                 var difference = counts[count].current - counts[count].previous;
@@ -63,7 +63,16 @@ $(document).ready(function () {
         $("html, body").animate({scrollTop: $(".numbers").offset().top - 60}, 500)
     }), AOS.init({duration: 1200});
     var visibleHeader = function () {
-        $(window).scrollTop() > 50 ? ($("header").addClass("scroll-header"), $(".hidden-sm.brand img"), $(".header-cta").removeClass("hide")) : ($("header").removeClass("scroll-header"), $(".hidden-sm.brand img"), $(".header-cta").addClass("hide"))
+       if($(window).scrollTop() > 50) {
+           $("header").addClass("scroll-header")
+           $(".header-cta").removeClass("hide")
+           // $("header .right").addClass("hide")
+       } else{
+           $("header").removeClass("scroll-header")
+           $(".header-cta").addClass("hide")
+           // $("header .right").removeClass("hide")
+       }
+        // $(window).scrollTop() > 50 ? ($("header").addClass("scroll-header"), $(".hidden-sm.brand img"), $(".header-cta").removeClass("hide")) : ($("header").removeClass("scroll-header"), $(".hidden-sm.brand img"), $(".header-cta").addClass("hide"))
     };
 
     // $(window).on("scroll", visibleHeader), visibleHeader(), $(".testimonial-slider").slick({
@@ -91,6 +100,7 @@ $(document).ready(function () {
         }), Counter.init()
 
     }
+
     $(".testimonial-slider").not('.slick-initialized').slick({
         dots: !0,
         infinite: !1,
@@ -102,7 +112,10 @@ $(document).ready(function () {
         autoplaySpeed: 7e3
     }), Counter.init()
 
-$(window).on("scroll", visibleHeader), visibleHeader(),createSlick()
+    $(window).on("scroll", visibleHeader), visibleHeader(), createSlick()
 
 });
+
+
+//
 //# sourceMappingURL=main.map
