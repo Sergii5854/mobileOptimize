@@ -22,7 +22,7 @@ var Counter = function () {
     }, update_counts = function () {
         var data = {"session_count": 34929161, "therapist_count": 3262, "member_count": 450265, "status": "success"}
         updating_counts = !0, in_view() ? $.get(data).success(function (data) {
-            var result = JSON.parse(data);
+            var result = {"session_count": 34929161, "therapist_count": 3262, "member_count": 450265, "status": "success"};
             counts.session_count.current = result.session_count, counts.therapist_count.current = result.therapist_count, counts.member_count.current = result.member_count
         }).always(function () {
             in_view() && setTimeout(update_counts, 2e4)
